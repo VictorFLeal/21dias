@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21 Dias de Oração</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f4f8;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+      }
+      .day {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 15px auto;
+        max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .day h2 {
+        margin-top: 0;
+        color: #34495e;
+      }
+      .prayer {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        background: #ecf0f1;
+        padding: 12px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+      .prayer.completed {
+        background: #2ecc71;
+        color: white;
+        text-decoration: line-through;
+      }
+      .prayer input[type="checkbox"] {
+        margin-right: 12px;
+        transform: scale(1.3);
+      }
+      .prayer-text {
+        flex: 1;
+      }
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #7f8c8d;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>21 Dias de Oração</h1>
+
+    <div id="container"></div>
+
+    <footer>© 2025 Seu Propósito de Oração</footer>
+
+    <script>
+      const prayers = [
+        [
+          "Senhor, entrego este dia em Tuas mãos. Que meu coração e o dela sejam guiados pelo Teu amor, e que possamos voltar a nos unir com perdão e carinho. Amém.",
+          "Meu Deus, fortalece meu coração e toca o dela com amor. Que nosso reencontro seja abençoado e segundo a Tua vontade. Amém.",
+          "Pai amado, agradeço por ouvir minha prece. Que nossos caminhos se cruzem novamente e que nosso amor seja renovado. Amém.",
+        ],
+        [
+          "Senhor, abençoa nosso relacionamento e ilumina nossos corações. Que possamos deixar mágoas para trás e recomeçar juntos. Amém.",
+          "Deus, fortalece minha paciência e ajuda-me a confiar em Ti. Que ela sinta nosso amor e o desejo de voltar a caminhar comigo. Amém.",
+          "Pai querido, que nossos corações se aproximem novamente. Guia-nos na reconciliação e abençoa nosso amor. Amém.",
+        ],
+        [
+          "Senhor, obrigado por este dia. Toca o coração dela com amor e compreensão. Ajuda-nos a reconstruir nossa relação. Amém.",
+          "Deus, cura qualquer mágoa que exista entre nós e nos aproxima com sinceridade e carinho. Amém.",
+          "Pai amado, entrego nosso relacionamento em Tuas mãos. Que possamos voltar a nos amar com respeito e paciência. Amém.",
+        ],
+        [
+          "Senhor, ilumina nosso caminho e nos conduza de volta um para o outro. Que nossos corações se abram ao perdão. Amém.",
+          "Deus, fortalece nossa fé e nos ajuda a confiar em Teu plano. Que nosso amor seja restaurado com sabedoria. Amém.",
+          "Pai amado, que a Tua presença cure nossas feridas e nos una novamente em amor verdadeiro. Amém.",
+        ],
+        [
+          "Senhor, toca o coração dela com bondade e compreensão. Guia-nos para um reencontro abençoado. Amém.",
+          "Deus, protege nossos sentimentos e nos aproxima com respeito, carinho e paciência. Amém.",
+          "Pai amado, que nossos caminhos se cruzem de acordo com Tua vontade e que nosso amor se renove. Amém.",
+        ],
+        [
+          "Senhor, ilumina nosso amor e ajuda-nos a superar qualquer barreira. Que possamos voltar a caminhar juntos. Amém.",
+          "Deus, enche nossos corações de paciência, perdão e compreensão. Que possamos nos reconectar com sinceridade. Amém.",
+          "Pai amado, entrego nosso relacionamento a Ti. Guia-nos para um amor verdadeiro e duradouro. Amém.",
+        ],
+        [
+          "Senhor, ajuda-nos a deixar o passado para trás e abrir espaço para um novo começo cheio de amor. Amém.",
+          "Deus, que ela sinta meu amor e a importância de recomeçar nosso relacionamento. Amém.",
+          "Pai querido, restaura nosso vínculo e nos una novamente segundo a Tua vontade. Amém.",
+        ],
+        [
+          "Senhor, fortalece minha fé e meu coração, e toca o dela com compreensão e amor. Amém.",
+          "Deus, nos guia para perdoar, reconectar e cultivar um relacionamento saudável. Amém.",
+          "Pai amado, que nossa união seja restaurada com paciência, carinho e respeito mútuo. Amém.",
+        ],
+        [
+          "Senhor, abre nossos corações para o Teu amor e permite que nos encontremos novamente. Amém.",
+          "Deus, ensina-nos a ser pacientes, compreensivos e cheios de amor. Amém.",
+          "Pai amado, que nosso relacionamento seja renovado e guiado por Tua luz. Amém.",
+        ],
+        [
+          "Senhor, toca o coração dela e que ela veja meu amor verdadeiro. Ajuda-nos a nos reconectar. Amém.",
+          "Deus, fortalece minha confiança em Ti e em nosso amor. Que possamos voltar a caminhar juntos. Amém.",
+          "Pai amado, restaura nosso amor e cura qualquer ferida em nossos corações. Amém.",
+        ],
+        [
+          "Senhor, abençoa nosso relacionamento e nos ajuda a deixar as mágoas para trás. Amém.",
+          "Deus, guia-nos para recomeçar com amor, paciência e compreensão. Amém.",
+          "Pai querido, que nosso amor seja renovado e cheio de alegria e harmonia. Amém.",
+        ],
+        [
+          "Senhor, ajuda-nos a ver o valor um do outro e nos aproxima com sinceridade. Amém.",
+          "Deus, que a Tua luz ilumine nosso relacionamento e nos dê uma chance de recomeçar. Amém.",
+          "Pai amado, que possamos voltar a nos amar de forma pura, verdadeira e duradoura. Amém.",
+        ],
+        [
+          "Senhor, fortalece meu coração e toca o dela com amor e bondade. Amém.",
+          "Deus, guia-nos para reconstruir nosso relacionamento com paciência e respeito. Amém.",
+          "Pai querido, que nosso amor seja restaurado e que nossos caminhos se unam novamente. Amém.",
+        ],
+        [
+          "Senhor, ajuda-nos a superar obstáculos e nos aproximar novamente com amor verdadeiro. Amém.",
+          "Deus, cura nosso relacionamento e enche nossos corações de esperança e fé. Amém.",
+          "Pai amado, que possamos voltar a nos entender e nos amar profundamente. Amém.",
+        ],
+        [
+          "Senhor, toca nosso amor e nos guie para a reconciliação. Amém.",
+          "Deus, fortalece nossa fé e nos ajuda a confiar em Teu plano para nós. Amém.",
+          "Pai querido, que nosso relacionamento seja renovado com paciência, carinho e harmonia. Amém.",
+        ],
+        [
+          "Senhor, que nosso amor seja restaurado segundo Tua vontade e Tua luz nos guie. Amém.",
+          "Deus, ajuda-nos a compreender e perdoar, criando um vínculo forte e sincero. Amém.",
+          "Pai amado, entrego nosso relacionamento em Tuas mãos para ser abençoado e renovado. Amém.",
+        ],
+        [
+          "Senhor, abençoa nosso amor e guia-nos de volta um para o outro. Amém.",
+          "Deus, fortalece nossos corações e nos ajuda a cultivar paciência, fé e carinho. Amém.",
+          "Pai querido, que nosso relacionamento seja restaurado com amor verdadeiro e duradouro. Amém.",
+        ],
+        [
+          "Senhor, toca o coração dela e ajuda-nos a nos reconectar com sinceridade. Amém.",
+          "Deus, cura nossas feridas e nos aproxima com compreensão e paciência. Amém.",
+          "Pai amado, que nosso amor seja renovado e guiado pela Tua luz divina. Amém.",
+        ],
+        [
+          "Senhor, fortalece meu coração e toca o dela com bondade e amor. Amém.",
+          "Deus, ajuda-nos a superar qualquer dificuldade e restaurar nosso relacionamento. Amém.",
+          "Pai querido, que nosso vínculo seja renovado e cheio de alegria e harmonia. Amém.",
+        ],
+        [
+          "Senhor, abençoa nosso amor e nos permita recomeçar juntos. Amém.",
+          "Deus, guia-nos para perdoar, compreender e cultivar um relacionamento saudável. Amém.",
+          "Pai amado, que nosso amor seja restaurado e que possamos caminhar lado a lado novamente. Amém.",
+        ],
+        [
+          "Senhor, agradeço por me acompanhar durante esses 21 dias. Que nosso amor seja restaurado segundo a Tua vontade. Amém.",
+          "Deus, fortalece nosso relacionamento e aproxima nossos corações com paciência, carinho e fé. Amém.",
+          "Pai querido, que nosso amor se renove, que nossos caminhos se unam e que possamos viver um relacionamento abençoado e duradouro. Amém.",
+        ],
+      ];
+
+      const container = document.getElementById("container");
+
+      // Recupera o estado salvo
+      let savedState = JSON.parse(localStorage.getItem("prayersState")) || [];
+
+      prayers.forEach((dayPrayers, i) => {
+        const dayDiv = document.createElement("div");
+        dayDiv.classList.add("day");
+
+        const dayTitle = document.createElement("h2");
+        dayTitle.textContent = `Dia ${i + 1}`;
+        dayDiv.appendChild(dayTitle);
+
+        dayPrayers.forEach((prayerText, j) => {
+          const prayerDiv = document.createElement("div");
+          prayerDiv.classList.add("prayer");
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+
+          // Define o id único para cada oração
+          const prayerId = `${i}-${j}`;
+          if (savedState.includes(prayerId)) {
+            checkbox.checked = true;
+            prayerDiv.classList.add("completed");
+          }
+
+          checkbox.addEventListener("change", () => {
+            prayerDiv.classList.toggle("completed", checkbox.checked);
+            if (checkbox.checked) {
+              if (!savedState.includes(prayerId)) savedState.push(prayerId);
+            } else {
+              savedState = savedState.filter((id) => id !== prayerId);
+            }
+            localStorage.setItem("prayersState", JSON.stringify(savedState));
+          });
+
+          const textDiv = document.createElement("div");
+          textDiv.classList.add("prayer-text");
+          textDiv.textContent = prayerText;
+
+          prayerDiv.appendChild(checkbox);
+          prayerDiv.appendChild(textDiv);
+          dayDiv.appendChild(prayerDiv);
+        });
+
+        container.appendChild(dayDiv);
+      });
+    </script>
+  </body>
+</html>
