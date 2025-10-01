@@ -1,224 +1,319 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>21 Dias de Oração</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>21 Dias de Oração — Reconciliação e Futuro</title>
     <style>
-      body {
+      :root{
+        --bg:#f6f8fb; --card:#ffffff; --muted:#7f8c8d; --accent:#27ae60; --primary:#2c3e50;
+      }
+      body{
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #f0f4f8;
-        margin: 0;
-        padding: 20px;
+        background:var(--bg); margin:0; padding:22px; color:var(--primary);
       }
-      h1 {
-        text-align: center;
-        color: #2c3e50;
-      }
-      .day {
-        background: #fff;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px auto;
-        max-width: 600px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .day h2 {
-        margin-top: 0;
-        color: #34495e;
-      }
-      .prayer {
-        display: flex;
-        align-items: center;
-        margin: 10px 0;
-        background: #ecf0f1;
-        padding: 12px;
-        border-radius: 8px;
-        transition: background 0.3s;
-      }
-      .prayer.completed {
-        background: #2ecc71;
-        color: white;
-        text-decoration: line-through;
-      }
-      .prayer input[type="checkbox"] {
-        margin-right: 12px;
-        transform: scale(1.3);
-      }
-      .prayer-text {
-        flex: 1;
-      }
-      footer {
-        text-align: center;
-        margin-top: 30px;
-        color: #7f8c8d;
-      }
+      h1{ text-align:center; margin:0 0 8px 0 }
+      .meta{ max-width:980px; margin:4px auto 16px; text-align:center; color:var(--muted); font-size:14px }
+      .controls{ max-width:980px; margin:8px auto; display:flex; gap:8px; justify-content:center }
+      button{ padding:8px 12px; border-radius:8px; border:0; background:#34495e; color:#fff; cursor:pointer }
+      .progress-wrap{ max-width:980px; margin:14px auto }
+      .progress-container{ background:#ecf0f1; border-radius:12px; overflow:hidden }
+      .progress-bar{ height:20px; width:0%; background:var(--accent); transition:width .4s }
+      .progress-text{ text-align:center; margin-top:8px; color:var(--primary); font-weight:600 }
+      #container{ max-width:980px; margin:18px auto }
+      .day{ background:var(--card); border-radius:12px; padding:18px; margin:14px 0; box-shadow:0 8px 20px rgba(18,28,40,0.06) }
+      .day h2{ margin:0 0 12px 0 }
+      .prayer{ display:flex; align-items:flex-start; gap:12px; background:#f1f4f6; padding:12px; border-radius:10px; margin:8px 0 }
+      .prayer.completed{ background:var(--accent); color:#fff; text-decoration:line-through }
+      .prayer input[type="checkbox"]{ transform:scale(1.3); margin-top:6px }
+      .prayer-text{ flex:1; white-space:pre-wrap }
+      footer{ text-align:center; margin-top:28px; color:var(--muted) }
+      @media (max-width:640px){ body{padding:12px} .prayer{flex-direction:row} }
     </style>
   </head>
   <body>
-    <h1>21 Dias de Oração</h1>
+    <h1>21 Dias de Oração — Reconciliação e Futuro</h1>
+    <div class="meta">21 dias, 3 orações por dia. Ore com fé; marque o que já orou. Progresso salvo no seu navegador.</div>
+
+    <div class="controls">
+      <button id="reset">Reiniciar progresso</button>
+      <button id="download">Baixar orações (texto)</button>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
+      <div id="progress-text" class="progress-text">0% concluído</div>
+    </div>
 
     <div id="container"></div>
 
-    <footer>© 2025 Seu Propósito de Oração</footer>
+    <footer>© 2025 — Que Deus guie seu coração</footer>
 
     <script>
+      // 21 dias, 3 orações por dia. Foco: reconciliação, fortalecimento do vínculo,
+      // afastamento de más influências, proteção, respeito aos pais, abandono de bebida/saídas ruins,
+      // saudade saudável, aproximação e caminho ao casamento.
       const prayers = [
+        // Dia 1
         [
-          "Senhor, entrego este dia em Tuas mãos. Que meu coração e o dela sejam guiados pelo Teu amor, e que possamos voltar a nos unir com perdão e carinho. Amém.",
-          "Meu Deus, fortalece meu coração e toca o dela com amor. Que nosso reencontro seja abençoado e segundo a Tua vontade. Amém.",
-          "Pai amado, agradeço por ouvir minha prece. Que nossos caminhos se cruzem novamente e que nosso amor seja renovado. Amém.",
+`Senhor meu Deus, eu venho em oração entregando o meu desejo de reconciliação. Obrigado pelo encontro que tivemos hoje; eu creio que Tu estás trabalhando. Peço que o Senhor fortaleça o coração dela para ver a beleza de um compromisso sério, para valorizar o cuidado e o zelo que tenho por ela. Afasta as amizades que trazem confusão e sedução; que as companhias a queiram ver bem, a edificar. Protege-a de conversas e intenções de outros homens que não busquem o bem dela. Senhor, que o desejo por sair e beber perca atração e que a casa e a família voltem a ser fontes de alegria. Que a relação com os pais seja harmoniosa, com respeito e paciência. Guia nossos próximos passos para que, com oração e sabedoria, possamos caminhar rumo a um compromisso de casamento. Amém.`,
+
+`Pai amado, entrego este relacionamento nas Tuas mãos e peço cura para nossas feridas. Que o Senhor coloque ao redor dela pessoas que a aconselhem com amor e prudência. Que os exemplos que a influenciem para o bem sejam mais fortes que as vozes que a puxam para distrações. Senhor, aproxima-nos mais em diálogo sincero, para que possamos falar com humildade, pedir perdão quando preciso e agir com responsabilidade. Se for conforme a Tua vontade, encaminha-nos para o casamento e um lar abençoado. Amém.`,
+
+`Deus de misericórdia, torna-me paciente e maduro para ser digno da confiança dela. Dá-me palavras justas e ações coerentes para que, ao conversarmos, eu mostre um caminho seguro para o futuro. Protege-a, Senhor, e coloca no coração dela a vontade de construir algo verdadeiro. Que nossa história se torne testemunho de graça e transformação. Amém.`
         ],
+        // Dia 2
         [
-          "Senhor, abençoa nosso relacionamento e ilumina nossos corações. Que possamos deixar mágoas para trás e recomeçar juntos. Amém.",
-          "Deus, fortalece minha paciência e ajuda-me a confiar em Ti. Que ela sinta nosso amor e o desejo de voltar a caminhar comigo. Amém.",
-          "Pai querido, que nossos corações se aproximem novamente. Guia-nos na reconciliação e abençoa nosso amor. Amém.",
+`Pai querido, obrigado pelo cuidado. Hoje peço que Tu trabalhes para que ela recupere o desejo por relacionamentos saudáveis, pautados em respeito e compromisso. Afasta influências que banalizam o amor e substitui-as por amizades que a edifiquem. Dá-lhe clareza para reconhecer que um compromisso sério exige entrega, responsabilidade e fidelidade. Senhor, fortalece a relação dela com os pais, que haja diálogo e paz em casa. Guia-me nas atitudes para que eu seja parceiro e futuro companheiro digno de confiança. Amém.`,
+
+`Deus de bondade, que a alegria de estar em família se multiplique na vida dela e que as saídas que apenas distraem percam brilho. Ensina-nos a valorizar o tempo com conversas, planejamento e propósito. Que ela sinta, com suavidade, o quanto somos capazes de construir um lar estável e feliz. Abençoa nossos passos. Amém.`,
+
+`Senhor, peço transformação prática: que ela passe a buscar companhias que a incentivem a crescer e a evitar ambientes de excesso. Que o respeito aos pais e aos valores cresça diariamente, preparando-a para ser parceira de vida. Dá-me sabedoria para caminhar com ela. Amém.`
         ],
+        // Dia 3
         [
-          "Senhor, obrigado por este dia. Toca o coração dela com amor e compreensão. Ajuda-nos a reconstruir nossa relação. Amém.",
-          "Deus, cura qualquer mágoa que exista entre nós e nos aproxima com sinceridade e carinho. Amém.",
-          "Pai amado, entrego nosso relacionamento em Tuas mãos. Que possamos voltar a nos amar com respeito e paciência. Amém.",
+`Deus misericordioso, hoje peço que Tu abençoes o tempo de conversa entre nós. Dá-nos clareza, calma e humildade para expor sentimentos e ouvir o outro com empatia. Que nossas palavras sejam cura e não dor. Que as amizades que a cercam venham a ser bênçãos e não armadilhas; que as pessoas ao redor dela a eduquem para a vida a dois. Senhor, guia-nos para decisões que edifiquem um futuro de compromisso. Amém.`,
+
+`Pai, fortalece nela o desejo de construir algo sério quando reconhecer que vale a pena. Que o prazer por festas e bebidas seja trocado por projetos e sonhos em conjunto. Stir-lhe vontade de partilhar planos e construir uma família, se esta for Tua vontade. Amém.`,
+
+`Deus de sabedoria, dá-me sensibilidade para perceber o momento certo de falar e de agir. Que eu demonstre com atitudes o respeito, a lealdade e a constância que um lar exige. Que ela reconheça e deseje caminhar conosco. Amém.`
         ],
+        // Dia 4
         [
-          "Senhor, ilumina nosso caminho e nos conduza de volta um para o outro. Que nossos corações se abram ao perdão. Amém.",
-          "Deus, fortalece nossa fé e nos ajuda a confiar em Teu plano. Que nosso amor seja restaurado com sabedoria. Amém.",
-          "Pai amado, que a Tua presença cure nossas feridas e nos una novamente em amor verdadeiro. Amém.",
+`Senhor, eu peço que Tu traga cura emocional a ela e a mim, para que feridas do passado não destruam a chance de um novo começo. Que amizades venham a incentivá-la a escolhas sábias e que nenhum homem entre na vida dela com a intenção de confundir seu coração. Que a presença em casa seja vista como refúgio e que o respeito aos pais floresça. Guia nosso diálogo de reaproximação para que seja verdadeiro e com frutos duradouros. Amém.`,
+
+`Pai amado, que a presença de Deus seja percebida em cada passo que damos. Dá-nos coragem para enfrentar questões difíceis com sinceridade e ternura. Que ela perceba que um relacionamento maduro requer renúncia e amor prático. Abençoa nosso caminho rumo ao compromisso. Amém.`,
+
+`Deus, transforma o desejo de distração em desejo por construção; que a vida em conjunto pareça mais atraente do que qualquer prazer passageiro. Ensina-nos a priorizar o que importa. Amém.`
         ],
+        // Dia 5
         [
-          "Senhor, toca o coração dela com bondade e compreensão. Guia-nos para um reencontro abençoado. Amém.",
-          "Deus, protege nossos sentimentos e nos aproxima com respeito, carinho e paciência. Amém.",
-          "Pai amado, que nossos caminhos se cruzem de acordo com Tua vontade e que nosso amor se renove. Amém.",
+`Senhor, clamo por proteção ao coração dela: que ele seja preservado de intrigas e de relacionamentos que não honrem sua dignidade. Que as amizades se tornem firmes pilares de crescimento e que nenhum homem desvie sua atenção de um projeto sério. Concede a ela serenidade para honrar a família e para cultivar raízes de fé e respeito. Que nosso reencontro seja marcado por humildade e compromisso. Amém.`,
+
+`Pai, liberta-a da vontade de buscar em festas um sentido que só se encontra em propósito e intimidade verdadeira. Que ela encontre alegria nas pequenas coisas, em conversas longas, em planos comuns. Senhor, guia-me para ser coerente com o que prometo. Amém.`,
+
+`Deus de amor, que nossos passos sejam guiados pelo Senhor, e que as decisões que tomarmos juntos sejam firmes e bem fundamentadas, até que surja a hora do casamento. Amém.`
         ],
+        // Dia 6
         [
-          "Senhor, ilumina nosso amor e ajuda-nos a superar qualquer barreira. Que possamos voltar a caminhar juntos. Amém.",
-          "Deus, enche nossos corações de paciência, perdão e compreensão. Que possamos nos reconectar com sinceridade. Amém.",
-          "Pai amado, entrego nosso relacionamento a Ti. Guia-nos para um amor verdadeiro e duradouro. Amém.",
+`Pai, peço sabedoria para que eu seja instrumento de paz para ela. Que minhas palavras sejam construção e que minhas ações provem meu compromisso. Fornece a ela amigos e conselheiros que a coloquem no caminho certo. Que a vontade de se distrair com bebida ou saídas sem propósito se torne menos atraente diante da possibilidade de viver algo sério conosco. Amém.`,
+
+`Senhor, toca a família dela para que o ambiente de casa seja de amor e orientação, e não de conflito. Que o respeito e a alegria voltem a ser marcas dessa casa. Que, com isso, ela se sinta segura para sonhar com um futuro a dois. Amém.`,
+
+`Deus, prepara-nos para dialogar sobre o futuro com clareza: filhos, planos, fé e valores. Que possamos construir uma base forte para um casamento abençoado. Amém.`
         ],
+        // Dia 7
         [
-          "Senhor, ajuda-nos a deixar o passado para trás e abrir espaço para um novo começo cheio de amor. Amém.",
-          "Deus, que ela sinta meu amor e a importância de recomeçar nosso relacionamento. Amém.",
-          "Pai querido, restaura nosso vínculo e nos una novamente segundo a Tua vontade. Amém.",
+`Senhor, hoje peço que Tu multipliques a paciência em nós. Reconciliar exige tempo e disciplina; ajuda-nos a perseverar. Afasta as más influências e faz crescer a sensatez nas escolhas dela. Que nenhum homem ocupe o espaço de quem pretende construir um lar. Que a relação com os pais seja de respeito, e que ela se sinta apoiada para crescer. Amém.`,
+
+`Pai querido, que cada reencontro entre nós seja cheio de verdade e vontade de acertar. Dá-nos habilidades para resolver mágoas com diálogo e serviço. Que a ideia de casamento seja tratada com responsabilidade e ternura. Amém.`,
+
+`Deus de bondade, prepara nosso caminho com boas companhias, bom aconselhamento e amizades que confirmem o que é bom e belo. Amém.`
         ],
+        // Dia 8
         [
-          "Senhor, fortalece minha fé e meu coração, e toca o dela com compreensão e amor. Amém.",
-          "Deus, nos guia para perdoar, reconectar e cultivar um relacionamento saudável. Amém.",
-          "Pai amado, que nossa união seja restaurada com paciência, carinho e respeito mútuo. Amém.",
+`Deus misericordioso, abençoa as áreas da vida dela onde há fraqueza. Que a busca por aprovação ou distração dê lugar a segurança interior e ao desejo de estabilidade. Que amizades venham a motivar o crescimento espiritual e emocional dela. Senhor, dá-nos coragem para assumir responsabilidades e dar passos práticos em direção a um futuro a dois. Amém.`,
+
+`Pai, que os encontros sociais se tornem momentos de equilíbrio e que ela aprenda a dizer não quando necessário. Que a família seja o centro de aconchego e que o respeito aos pais seja natural. Amém.`,
+
+`Senhor, guia nossas conversas para que, ao planejar o futuro, as escolhas sejam pautadas por fé e maturidade. Amém.`
         ],
+        // Dia 9
         [
-          "Senhor, abre nossos corações para o Teu amor e permite que nos encontremos novamente. Amém.",
-          "Deus, ensina-nos a ser pacientes, compreensivos e cheios de amor. Amém.",
-          "Pai amado, que nosso relacionamento seja renovado e guiado por Tua luz. Amém.",
+`Pai eterno, eu peço por proteções concretas: que pessoas mal-intencionadas não consigam influenciar ou ferir nosso caminho. Que nenhuma relação superficial tome o lugar de um compromisso profundo. Que ela busque refúgio naquilo que edifica: família, trabalho honesto e fé. Amém.`,
+
+`Deus, inspira nela o desejo de construir uma casa sólida, com respeito mútuo e prioridades certas. Que o hobby de sair sem medida se torne secundário diante da alegria de sonhar conosco. Amém.`,
+
+`Senhor, abençoa-me com perseverança e bondade, para que eu seja parceiro digno do sonho que almejo com ela. Amém.`
         ],
+        // Dia 10
         [
-          "Senhor, toca o coração dela e que ela veja meu amor verdadeiro. Ajuda-nos a nos reconectar. Amém.",
-          "Deus, fortalece minha confiança em Ti e em nosso amor. Que possamos voltar a caminhar juntos. Amém.",
-          "Pai amado, restaura nosso amor e cura qualquer ferida em nossos corações. Amém.",
+`Pai amado, neste décimo dia peço que a confiança entre nós aumente. Que as mágoas sejam transformadas em aprendizado e que o perdão venha com maturidade. Que amigos a incentivem a escolhas boas e que a influência masculina indevida seja afastada. Que possamos conversar sobre casamento com clareza e esperança. Amém.`,
+
+`Deus, dá-nos recursos emocionais para vencer inseguranças. Que a relação com os pais dela seja fonte de apoio e entendimento. Que o desejo por festas se torne secundário diante do prazer de planejar uma vida a dois. Amém.`,
+
+`Senhor, prepara nossos corações para assumir compromissos sérios, com respeito e responsabilidade. Amém.`
         ],
+        // Dia 11
         [
-          "Senhor, abençoa nosso relacionamento e nos ajuda a deixar as mágoas para trás. Amém.",
-          "Deus, guia-nos para recomeçar com amor, paciência e compreensão. Amém.",
-          "Pai querido, que nosso amor seja renovado e cheio de alegria e harmonia. Amém.",
+`Senhor, peço hoje que Tu molde o caráter dela com gentileza e firmeza. Que ela escolha amigos que a estimulem ao bem e que nenhum homem provoque divisão em seu coração. Que a obediência e o respeito aos pais floresçam, e que ela deseje construir algo verdadeiro comigo. Amém.`,
+
+`Pai, que o tempo de reaproximação nos ensine a lidar com emoções de forma madura. Que a prioridade pela família e pela fé se torne clara na vida dela. Amém.`,
+
+`Deus de amor, guia-nos ao diálogo que promove reconciliação e futuro. Amém.`
         ],
+        // Dia 12
         [
-          "Senhor, ajuda-nos a ver o valor um do outro e nos aproxima com sinceridade. Amém.",
-          "Deus, que a Tua luz ilumine nosso relacionamento e nos dê uma chance de recomeçar. Amém.",
-          "Pai amado, que possamos voltar a nos amar de forma pura, verdadeira e duradoura. Amém.",
+`Pai querido, eu peço que a presença de Deus seja o critério maior das escolhas dela. Que amizades que a desviam percam força e que boas companhias a empurrem para projetos saudáveis. Que ela rejeite o consumo que entorpece e busque a clareza para ver que o amor responsável vale mais. Amém.`,
+
+`Senhor, faz com que os conselhos dos pais sejam escutados em humildade e que a família volte a ser centro de paz. Que a maturidade venha e que possamos, juntos, planejar um casamento fundamentado em Ti. Amém.`,
+
+`Deus, abençoa nossos passos para que sejam firmes e guiados, e que a vontade de construir supere a vontade de apenas divertir-se. Amém.`
         ],
+        // Dia 13
         [
-          "Senhor, fortalece meu coração e toca o dela com amor e bondade. Amém.",
-          "Deus, guia-nos para reconstruir nosso relacionamento com paciência e respeito. Amém.",
-          "Pai querido, que nosso amor seja restaurado e que nossos caminhos se unam novamente. Amém.",
+`Senhor, peço que Tu faças surgir ao redor dela pessoas que mostrem o valor do compromisso, que a inspirem a sonhar com um lar sólido. Que a atração por festas e bebidas se torne menos importante diante da beleza de um projeto de vida a dois. Amém.`,
+
+`Pai, dá-lhe sabedoria para escolher companhias e força para se desvincular de relações que a prejudicam. Que o respeito pelos pais cresça e que nós possamos caminhar com clareza em propósito e fé. Amém.`,
+
+`Deus bondoso, fortalece-me para ser parceiro fiel, capaz de construir segurança emocional e espiritual para ela. Amém.`
         ],
+        // Day 14
         [
-          "Senhor, ajuda-nos a superar obstáculos e nos aproximar novamente com amor verdadeiro. Amém.",
-          "Deus, cura nosso relacionamento e enche nossos corações de esperança e fé. Amém.",
-          "Pai amado, que possamos voltar a nos entender e nos amar profundamente. Amém.",
+`Pai amado, intercedo para que as amizades ruins deixem de ter voz e que novos amigos surjam com conselhos sábios. Que ela veja que um amor verdadeiro precisa de compromisso e cuidado, e que nenhum homem substitua a possibilidade de construir algo com responsabilidade. Amém.`,
+
+`Senhor, que a família seja fonte de orientação e que a relação com os pais se reconstrua com diálogo e respeito. Que o lazer se torne saudável e equilibrado, e que isso ajude a preparar o terreno para um casamento abençoado. Amém.`,
+
+`Deus, dá-nos oportunidade de conversar sobre casamento com serenidade, alinhando valores e projetos. Amém.`
         ],
+        // Day 15
         [
-          "Senhor, toca nosso amor e nos guie para a reconciliação. Amém.",
-          "Deus, fortalece nossa fé e nos ajuda a confiar em Teu plano para nós. Amém.",
-          "Pai querido, que nosso relacionamento seja renovado com paciência, carinho e harmonia. Amém.",
+`Senhor, peço coragem para ambos: coragem de perdoar, coragem de mudar e coragem de assumir compromissos. Que as influências negativas percam espaço e que amigos verdadeiros se revelem. Que a vontade de festas e bebida deixe de guiar decisões importantes. Amém.`,
+
+`Pai, toca os pais dela para que a orientem com ternura e sabedoria, e para que ela acolha os conselhos sem revolta. Que isso seja base para maturidade e união. Amém.`,
+
+`Deus, prepara-nos para construir juntos, com honestidade e fé, um relacionamento que possa chegar ao altar. Amém.`
         ],
+        // Day 16
         [
-          "Senhor, que nosso amor seja restaurado segundo Tua vontade e Tua luz nos guie. Amém.",
-          "Deus, ajuda-nos a compreender e perdoar, criando um vínculo forte e sincero. Amém.",
-          "Pai amado, entrego nosso relacionamento em Tuas mãos para ser abençoado e renovado. Amém.",
+`Pai querido, hoje peço transformação de hábitos: que o tempo livre venha a ser preenchido com projetos, conversas e crescimento, não com escape em festas. Que as amizades sejam seletivas e que outros homens não tomem espaço em seu coração. Amém.`,
+
+`Senhor, guia a família dela a ser suporte e ensinamento; que o respeito cresça e que a paz invada o lar. Que nossa história possa ser reescrita com maturidade. Amém.`,
+
+`Deus, dá-nos prudência para planejar o futuro com passos firmes e amorosos. Amém.`
         ],
+        // Day 17
         [
-          "Senhor, abençoa nosso amor e guia-nos de volta um para o outro. Amém.",
-          "Deus, fortalece nossos corações e nos ajuda a cultivar paciência, fé e carinho. Amém.",
-          "Pai querido, que nosso relacionamento seja restaurado com amor verdadeiro e duradouro. Amém.",
+`Senhor, peço que a fé dela cresça, e com ela a segurança para escolher o que edifica. Que amizades que a arrastam para o superficial percam vez e que os conselhos sábios curem mágoas. Que nenhum homem ache espaço para semear dúvidas no coração dela. Amém.`,
+
+`Pai, torna-nos exemplos de compromisso, e que isso a atraia mais do que qualquer diversão momentânea. Que a família volte a ser prioridade e que as conversas entre nós sejam cheias de propósito. Amém.`,
+
+`Deus de bondade, guia-nos passo a passo até um compromisso maduro e abençoado. Amém.`
         ],
+        // Day 18
         [
-          "Senhor, toca o coração dela e ajuda-nos a nos reconectar com sinceridade. Amém.",
-          "Deus, cura nossas feridas e nos aproxima com compreensão e paciência. Amém.",
-          "Pai amado, que nosso amor seja renovado e guiado pela Tua luz divina. Amém.",
+`Pai, hoje peço que a disciplina em escolhas se fortaleça nela: menos busca por prazer vazio, mais atenção a projetos e pessoas que valem. Que amizades que só trazem confusão se dissolvam e que a confiança nos pais e em nós cresça. Amém.`,
+
+`Senhor, que a ideia de casamento seja tratada com seriedade e que cada encontro nos leve a maturidade necessária para tal decisão. Amém.`,
+
+`Deus, abençoa nosso diálogo para que venha a ser sincero, restaurador e cheio de propósito. Amém.`
         ],
+        // Day 19
         [
-          "Senhor, fortalece meu coração e toca o dela com bondade e amor. Amém.",
-          "Deus, ajuda-nos a superar qualquer dificuldade e restaurar nosso relacionamento. Amém.",
-          "Pai querido, que nosso vínculo seja renovado e cheio de alegria e harmonia. Amém.",
+`Senhor, clamo por estabilidade emocional para ela e para mim, para que decisões sejam tomadas com cabeça e coração alinhados. Que amizades venham como suporte e não como fuga; que outros homens não encontrem espaço para gerar confusão. Amém.`,
+
+`Pai amado, toca os pais para que estejam próximos como suporte e que a relação familiar se torne firme. Que isso a ajude a escolher o que é melhor. Amém.`,
+
+`Deus, prepara-nos para assumir compromissos com responsabilidade, fé e amor. Amém.`
         ],
+        // Day 20
         [
-          "Senhor, abençoa nosso amor e nos permita recomeçar juntos. Amém.",
-          "Deus, guia-nos para perdoar, compreender e cultivar um relacionamento saudável. Amém.",
-          "Pai amado, que nosso amor seja restaurado e que possamos caminhar lado a lado novamente. Amém.",
+`Senhor, no penúltimo dia eu peço que Tu confirmes sinais de amadurecimento na vida dela: escolhas mais prudentes, companhias mais sábias, prioridade à família. Que a tentação por festas e bebidas diminua e que o caminho para um compromisso seja claro. Amém.`,
+
+`Pai, dá-nos discernimento para planejar e declarar nossas intenções de forma madura. Que conversas sobre casamento venham com paz e segurança. Amém.`,
+
+`Deus misericordioso, fortalece-nos para receber e oferecer apoio emocional, até o dia em que possamos dar um passo firme rumo ao altar. Amém.`
         ],
+        // Day 21
         [
-          "Senhor, agradeço por me acompanhar durante esses 21 dias. Que nosso amor seja restaurado segundo a Tua vontade. Amém.",
-          "Deus, fortalece nosso relacionamento e aproxima nossos corações com paciência, carinho e fé. Amém.",
-          "Pai querido, que nosso amor se renove, que nossos caminhos se unam e que possamos viver um relacionamento abençoado e duradouro. Amém.",
-        ],
+`Senhor meu Deus, obrigado por cada oração destes 21 dias. Entrego a Ti nosso desejo de reconciliação e futuro. Peço que o Senhor confirme em nós o que for segundo a Tua vontade: afasta más influências, guia as escolhas dela para companhias sábias, faça florescer respeito pelos pais e torne menos atraente a vida de excessos. Que nossos encontros sejam cheios de sinceridade, que a confiança retorne e que, se for da Tua vontade, possamos caminhar em direção ao casamento abençoados por Ti. Amém.`,
+
+`Pai amado, agradeço por me ouvir e peço que nos continues guiando para que, baseados em amor e responsabilidade, possamos construir um lar. Que cada passo que dermos de agora em diante seja iluminado pela Tua direção. Amém.`,
+
+`Deus de toda esperança, eu entrego nosso futuro nas Tuas mãos. Que o amor que nos une seja temperado pela paciência, pelo perdão e pelo desejo de servir um ao outro. Se for conforme a Tua vontade, abençoa nosso compromisso, nosso casamento e nossa família. Amém.`
+        ]
       ];
 
-      const container = document.getElementById("container");
+      const container = document.getElementById('container');
+      const progressBar = document.getElementById('progress-bar');
+      const progressText = document.getElementById('progress-text');
+      const resetBtn = document.getElementById('reset');
+      const downloadBtn = document.getElementById('download');
 
-      // Recupera o estado salvo
-      let savedState = JSON.parse(localStorage.getItem("prayersState")) || [];
+      const STORAGE_KEY = 'prayersState_reconciliation_v2';
+      let savedState = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-      prayers.forEach((dayPrayers, i) => {
-        const dayDiv = document.createElement("div");
-        dayDiv.classList.add("day");
+      function buildUI(){
+        container.innerHTML = '';
+        prayers.forEach((dayPrayers, i) => {
+          const dayDiv = document.createElement('div');
+          dayDiv.className = 'day';
+          const title = document.createElement('h2');
+          title.textContent = `Dia ${i+1}`;
+          dayDiv.appendChild(title);
 
-        const dayTitle = document.createElement("h2");
-        dayTitle.textContent = `Dia ${i + 1}`;
-        dayDiv.appendChild(dayTitle);
-
-        dayPrayers.forEach((prayerText, j) => {
-          const prayerDiv = document.createElement("div");
-          prayerDiv.classList.add("prayer");
-
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-
-          // Define o id único para cada oração
-          const prayerId = `${i}-${j}`;
-          if (savedState.includes(prayerId)) {
-            checkbox.checked = true;
-            prayerDiv.classList.add("completed");
-          }
-
-          checkbox.addEventListener("change", () => {
-            prayerDiv.classList.toggle("completed", checkbox.checked);
-            if (checkbox.checked) {
-              if (!savedState.includes(prayerId)) savedState.push(prayerId);
-            } else {
-              savedState = savedState.filter((id) => id !== prayerId);
+          dayPrayers.forEach((text, j) => {
+            const pDiv = document.createElement('div');
+            pDiv.className = 'prayer';
+            const chk = document.createElement('input');
+            chk.type = 'checkbox';
+            const id = `${i}-${j}`;
+            if(savedState.includes(id)){
+              chk.checked = true;
+              pDiv.classList.add('completed');
             }
-            localStorage.setItem("prayersState", JSON.stringify(savedState));
+            chk.addEventListener('change', () => {
+              pDiv.classList.toggle('completed', chk.checked);
+              if(chk.checked){
+                if(!savedState.includes(id)) savedState.push(id);
+              } else {
+                savedState = savedState.filter(x => x !== id);
+              }
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(savedState));
+              updateProgress();
+            });
+            const textDiv = document.createElement('div');
+            textDiv.className = 'prayer-text';
+            textDiv.textContent = text;
+            pDiv.appendChild(chk);
+            pDiv.appendChild(textDiv);
+            dayDiv.appendChild(pDiv);
           });
 
-          const textDiv = document.createElement("div");
-          textDiv.classList.add("prayer-text");
-          textDiv.textContent = prayerText;
-
-          prayerDiv.appendChild(checkbox);
-          prayerDiv.appendChild(textDiv);
-          dayDiv.appendChild(prayerDiv);
+          container.appendChild(dayDiv);
         });
+      }
 
-        container.appendChild(dayDiv);
+      function updateProgress(){
+        const total = prayers.length * 3;
+        const done = savedState.length;
+        const percent = Math.round((done / total) * 100);
+        progressBar.style.width = percent + '%';
+        progressText.textContent = `${percent}% concluído (${done}/${total} orações)`;
+      }
+
+      resetBtn.addEventListener('click', () => {
+        if(confirm('Deseja reiniciar o progresso? Isso removerá todas as marcações.')){
+          savedState = [];
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(savedState));
+          buildUI();
+          updateProgress();
+        }
       });
+
+      downloadBtn.addEventListener('click', () => {
+        let text = '21 Dias de Oração — Reconciliação e Futuro\\n\\n';
+        prayers.forEach((dayPrayers, i) => {
+          text += `Dia ${i+1}\\n\\n`;
+          dayPrayers.forEach((p, j) => {
+            text += `Oração ${j+1}:\\n${p}\\n\\n`;
+          });
+          text += '---\\n\\n';
+        });
+        const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '21_dias_oracao_reconciliacao_futuro.txt';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+
+      // init
+      buildUI();
+      updateProgress();
     </script>
   </body>
 </html>
